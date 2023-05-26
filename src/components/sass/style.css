@@ -47,14 +47,37 @@ body {
 }
 .main .quote-card .quote-btn button {
   padding: 8px 15px;
-  border: none;
   outline: none;
   cursor: pointer;
   font-size: 14px;
-  background: #000;
-  color: #fff;
+  color: #000;
+  background: none;
+  border: 1px solid black;
   border-radius: 4px;
   margin-right: 10px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.main .quote-card .quote-btn button:hover {
+  color: #fff;
+}
+.main .quote-card .quote-btn button:hover::before {
+  transform: translateX(0);
+}
+.main .quote-card .quote-btn button::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  background: #000;
+  color: #fff;
+  height: 100%;
+  width: 100%;
+  color: #fff;
+  z-index: -1;
+  transform: translateX(-100%);
+  transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .lds-ellipsis {
