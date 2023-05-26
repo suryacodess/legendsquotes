@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Loader from "./Loader";
 import "./sass/style.css";
+import Footer from "./Footer";
+// import bunny from "./png/pngwing.com.png";
 
 export default function Quote() {
   const [quotes, setQuotes] = useState({
@@ -9,6 +11,7 @@ export default function Quote() {
   });
 
   const [loader, setLoader] = useState(false);
+  const [mode, setMode] = useState(true);
 
   const getQuotes = async () => {
     setLoader(true);
@@ -24,16 +27,9 @@ export default function Quote() {
     }
   };
 
-//   const copyQuote = () =>{
-//         console.log(quotes.body);
-//         const copyQuote = getQuotes.select();
-//         copyQuote.setSelectionRange(0,99999);
-//         navigator.clipboard.writeText(copyQuote.body);
-//   }
-
   return (
     <>
-      <main className="main">
+      <main className={`main ${mode === false ? "dark-theme" : "light-theme"}`}>
         <div className="quote-card">
           {loader ? (
             <Loader />
@@ -46,15 +42,14 @@ export default function Quote() {
               </p>
             </div>
           )}
-
           <div className="quote-btn">
             <button onClick={getQuotes}>get quote</button>
             {/* <button onClick={copyQuote}>copy</button> */}
           </div>
-
-
         </div>
       </main>
+
+      <Footer css={mode}/>
     </>
   );
 }

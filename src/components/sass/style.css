@@ -6,6 +6,7 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  overflow: hidden;
 }
 
 .main {
@@ -15,6 +16,8 @@ body {
   justify-content: center;
   align-items: center;
   padding: 0 60px 0 20px;
+  overflow: hidden;
+  position: relative;
 }
 .main .quote-card {
   max-width: 600px;
@@ -77,6 +80,38 @@ body {
   color: #fff;
   z-index: -1;
   transform: translateX(-100%);
+  transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.footer {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+}
+.footer div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer div h4 a:hover .bunny {
+  transform: translateX(0%);
+}
+.footer .bunny {
+  position: absolute;
+  top: 25%;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transform: translateX(100%);
   transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
