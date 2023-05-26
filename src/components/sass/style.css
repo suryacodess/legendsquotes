@@ -115,8 +115,12 @@ button {
   align-items: flex-start;
   flex-direction: column;
 }
+.main .quote-card .quote h5 {
+  font-size: 14px;
+}
 .main .quote-card .quote p {
-  padding-top: 10px;
+  padding-top: 8px;
+  font-size: 12px;
 }
 .main .quote-card .quote-btn {
   display: flex;
@@ -132,7 +136,6 @@ button {
   color: #000;
   border: 1px solid black;
   border-radius: 4px;
-  margin-right: 10px;
   position: relative;
   overflow: hidden;
   z-index: 1;

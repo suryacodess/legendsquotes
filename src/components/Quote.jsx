@@ -7,7 +7,7 @@ import HiOutlineLightningBolt from "react-icons/hi";
 
 export default function Quote() {
   const [quotes, setQuotes] = useState({
-    body: "The constitutions of most of our States assert that all power is inherent in the people that... it is their right and duty to be at all times armed.",
+    quote: "The constitutions of most of our States assert that all power is inherent in the people that... it is their right and duty to be at all times armed.",
     author: "Thomas Jefferson",
   });
 
@@ -17,10 +17,10 @@ export default function Quote() {
   const getQuotes = async () => {
     setLoader(true);
     try {
-      await fetch("https://favqs.com/api/qotd")
+      await fetch("https://api.api-ninjas.com/v1/quotes?category=inspirational", {headers:{'X-Api-Key': 'eOeXJBJwiTA5kWohq8I/Vg==UUZkTrNmXEB3hqI2'}})
         .then((response) => response.json())
         .then((response) => {
-          setQuotes(response.quote);
+          setQuotes(response[0]);
         });
       setLoader(false);
     } catch (error) {
@@ -57,7 +57,7 @@ export default function Quote() {
             <Loader css={mode}/>
           ) : (
             <div className="quote">
-              <h4>{quotes.body}</h4>
+              <h5>{quotes.quote}</h5>
               <p>
                 {"- "}
                 {quotes.author}
