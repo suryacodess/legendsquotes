@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Loader from "./Loader";
 import "./sass/style.css";
 import Footer from "./Footer";
-// import bunny from "./png/pngwing.com.png";
+import MdDarkMode from "react-icons/md";
+import HiOutlineLightningBolt from "react-icons/hi";
 
 export default function Quote() {
   const [quotes, setQuotes] = useState({
@@ -11,7 +12,7 @@ export default function Quote() {
   });
 
   const [loader, setLoader] = useState(false);
-  const [mode, setMode] = useState(true);
+  const [mode, setMode] = useState(false);
 
   const getQuotes = async () => {
     setLoader(true);
@@ -27,12 +28,33 @@ export default function Quote() {
     }
   };
 
+  const switchTheme = () => {
+    setMode(true);
+    if (mode === true) {
+      setMode(false);
+    } else {
+      setMode(true);
+    }
+  };
+
   return (
     <>
-      <main className={`main ${mode === false ? "dark-theme" : "light-theme"}`}>
-        <div className="quote-card">
+      <main className={`main ${mode === true ? "dark-theme" : "light-theme"}`}>
+        <div className="theme-btn">
+          <button
+            onClick={switchTheme}
+            className={`${mode === true ? "dark-text" : "light-text"}`}
+          >
+            {mode === true ? "light" : "dark"}
+          </button>
+        </div>
+        <div
+          className={`quote-card ${
+            mode === true ? "quote-card-dark-theme" : "quote-card-light-theme"
+          }`}
+        >
           {loader ? (
-            <Loader />
+            <Loader css={mode}/>
           ) : (
             <div className="quote">
               <h4>{quotes.body}</h4>
@@ -42,14 +64,17 @@ export default function Quote() {
               </p>
             </div>
           )}
-          <div className="quote-btn">
+          <div
+            className={`${
+              mode === true ? "quote-btn-dark-theme" : "quote-btn"
+            }`}
+          >
             <button onClick={getQuotes}>get quote</button>
-            {/* <button onClick={copyQuote}>copy</button> */}
           </div>
         </div>
       </main>
 
-      <Footer css={mode}/>
+      <Footer css={mode} />
     </>
   );
 }
